@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const user = require('./routes/user');
+const InitiateMongoServer = require('./config/db');
 
+InitiateMongoServer();
 const app = express();
 
 app.use(bodyParser.json());
@@ -10,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
     res.json({ message: "API is Working"});
 });
+
 
 
 app.listen(PORT, (req, res) =>{
